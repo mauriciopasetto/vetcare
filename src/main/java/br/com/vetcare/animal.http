@@ -1,0 +1,93 @@
+@baseUrl = http://localhost:8080
+
+### Criar um novo Animal1
+POST http://localhost:8080/api/animais
+Content-Type: application/json
+
+{
+  "nome": "Rex",
+  "raca": "Labrador",
+  "sexo": "MACHO",
+  "especie": "CANINA",
+  "dataNascimento": "2020-05-10",
+  "rga": "RGA123456",
+  "vivo": true
+}
+
+### Criar um novo Animal2
+POST {{baseUrl}}/api/animais
+Content-Type: application/json
+
+{
+  "nome": "Bombom",
+  "raca": "Shitzu",
+  "sexo": "MACHO",
+  "especie": "CANINA",
+  "dataNascimento": "2020-05-10",
+  "rga": "RGA223456",
+  "vivo": true
+}
+
+### Criar um novo Animal3
+POST {{baseUrl}}/api/animais
+Content-Type: application/json
+
+{
+  "nome": "Pipoca",
+  "raca": "não definida",
+  "sexo": "FEMEA",
+  "especie": "CANINA",
+  "dataNascimento": "2020-05-10",
+  "rga": "RGA323456",
+  "vivo": true
+}
+
+### Criar um novo Animal4
+POST {{baseUrl}}/api/animais
+Content-Type: application/json
+
+{
+  "nome": "Felicia",
+  "raca": "não definida",
+  "sexo": "FEMEA",
+  "especie": "FELINA",
+  "dataNascimento": "2020-10-10",
+  "rga": "RGA423456",
+  "vivo": true
+}
+
+### Buscar Animal por ID
+GET http://localhost:8080/api/animais/1
+Accept: application/json
+
+### Listar animais não paginado
+GET {{baseUrl}}/api/animais
+
+### Listar animais paginado
+GET {{baseUrl}}/api/animais?page=0&size=5&sort=nome,asc
+
+### Atualizar animal parcial
+PATCH {{baseUrl}}/api/animais/1
+Content-Type: application/json
+
+{
+    "nome":"Rexano"
+}
+
+### Atualizar animal completo
+PUT {{baseUrl}}/api/animais/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "Rexana",
+  "raca": "Labrador",
+  "sexo": "FEMEA",
+  "especie": "CANINA",
+  "dataNascimento": "2020-10-10",
+  "rga": "RGA923456",
+  "vivo": true
+}
+
+### Deletar animal por ID
+DELETE {{baseUrl}}/api/animais/4
