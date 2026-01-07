@@ -1,7 +1,7 @@
-package br.com.vetcare.dto;
+package br.com.vetcare.animal.dto;
 
-import br.com.vetcare.model.Especie;
-import br.com.vetcare.model.Sexo;
+import br.com.vetcare.animal.model.Especie;
+import br.com.vetcare.animal.model.Sexo;
 
 import java.time.LocalDate;
 
@@ -14,7 +14,7 @@ public record AnimalResponseDTO (
         Especie especie,
         LocalDate dataNascimento,
         String rga,
-        boolean vivo
+        Boolean vivo
 
 )
 {}

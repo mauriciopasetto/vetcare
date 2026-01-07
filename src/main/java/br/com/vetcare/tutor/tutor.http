@@ -1,0 +1,93 @@
+@baseUrl = http://localhost:8080
+
+### Criar um novo Tutor1
+POST http://localhost:8080/api/tutores
+Content-Type: application/json
+
+{
+  "nome": "Mauricio",
+  "cpf": "555444666-44",
+  "rg": "9564256",
+  "email": "mauricio@email.com",
+  "telefone": "48 99999 9999",
+  "endereco": "Rua Jose Beiro, 521"
+}
+
+
+### Criar um novo Tutor2
+POST http://localhost:8080/api/tutores
+Content-Type: application/json
+
+{
+  "nome": "Adriana",
+  "cpf": "333444666-44",
+  "rg": "5554256",
+  "email": "adriana@email.com",
+  "telefone": "48 98888 9999",
+  "endereco": "Rua Jose Beiro, 521"
+}
+
+
+### Criar um novo Tutor3
+POST http://localhost:8080/api/tutores
+Content-Type: application/json
+
+{
+  "nome": "Roberto",
+  "cpf": "333555666-44",
+  "rg": "7774256",
+  "email": "roberto@email.com",
+  "telefone": "48 97777 9999",
+  "endereco": "Rua Santos Saraiva, 150"
+}
+
+
+### Criar um novo Tutor4
+POST http://localhost:8080/api/tutores
+Content-Type: application/json
+
+{
+  "nome": "Fernanda",
+  "cpf": "777444666-44",
+  "rg": "6665876",
+  "email": "fernanda@email.com",
+  "telefone": "48 96666 9999",
+  "endereco": "Rua Felipe Schimitch, 457"
+}
+
+
+
+
+### Buscar Tutor por ID
+GET http://localhost:8080/api/tutores/4
+Accept: application/json
+
+### Listar tutores não paginado
+GET {{baseUrl}}/api/tutores
+
+### Listar animais paginado
+GET {{baseUrl}}/api/tutores?page=0&size=5&sort=nome,asc
+
+### Atualizar animal parcial
+PATCH {{baseUrl}}/api/tutores/3
+Content-Type: application/json
+
+{
+    "nome":"Roberto Carlos"
+}
+
+### Atualizar animal completo
+PUT {{baseUrl}}/api/tutores/3
+Content-Type: application/json
+
+{
+  "nome": "Roberto Pirata",
+  "cpf": "333555666-44",
+  "rg": "7774256",
+  "email": "robertopirata@email.com",
+  "telefone": "48 97777 9999",
+  "endereco": "Rua Santos Saraiva, 150"
+}
+
+### Deletar animal por ID
+DELETE {{baseUrl}}/api/tutores/4

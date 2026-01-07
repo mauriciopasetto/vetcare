@@ -1,11 +1,11 @@
-package br.com.vetcare.controller;
+package br.com.vetcare.animal.controller;
 
-import br.com.vetcare.dto.AnimalCreateDTO;
-import br.com.vetcare.dto.AnimalPatchDTO;
-import br.com.vetcare.dto.AnimalResponseDTO;
-import br.com.vetcare.dto.AnimalUpdateDTO;
-import br.com.vetcare.repository.AnimalRepository;
-import br.com.vetcare.service.AnimalService;
+import br.com.vetcare.animal.dto.AnimalCreateDTO;
+import br.com.vetcare.animal.dto.AnimalPatchDTO;
+import br.com.vetcare.animal.dto.AnimalResponseDTO;
+import br.com.vetcare.animal.dto.AnimalUpdateDTO;
+import br.com.vetcare.animal.repository.AnimalRepository;
+import br.com.vetcare.animal.service.AnimalService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;

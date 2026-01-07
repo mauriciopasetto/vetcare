@@ -1,7 +1,7 @@
-package br.com.vetcare.dto;
+package br.com.vetcare.animal.dto;
 
-import br.com.vetcare.model.Especie;
-import br.com.vetcare.model.Sexo;
+import br.com.vetcare.animal.model.Especie;
+import br.com.vetcare.animal.model.Sexo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -21,7 +21,8 @@ public record AnimalCreateDTO (
     Especie especie,
     @PastOrPresent
     LocalDate dataNascimento,
-    @NotBlank @Size(max = 30) String rga,
+    @NotBlank @Size(max = 30)
+    String rga,
     @NotNull
     Boolean vivo
 

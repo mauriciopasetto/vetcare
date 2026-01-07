@@ -1,4 +1,4 @@
-package br.com.vetcare.model;
+package br.com.vetcare.animal.model;
 
 import jakarta.persistence.*;
 import lombok.*;

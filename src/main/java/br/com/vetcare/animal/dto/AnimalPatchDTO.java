@@ -1,7 +1,7 @@
-package br.com.vetcare.dto;
+package br.com.vetcare.animal.dto;
 
-import br.com.vetcare.model.Especie;
-import br.com.vetcare.model.Sexo;
+import br.com.vetcare.animal.model.Especie;
+import br.com.vetcare.animal.model.Sexo;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 

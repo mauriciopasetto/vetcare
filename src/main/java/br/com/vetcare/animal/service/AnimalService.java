@@ -1,10 +1,10 @@
-package br.com.vetcare.service;
+package br.com.vetcare.animal.service;
 
-import br.com.vetcare.dto.AnimalCreateDTO;
-import br.com.vetcare.dto.AnimalPatchDTO;
-import br.com.vetcare.dto.AnimalResponseDTO;
+import br.com.vetcare.animal.dto.AnimalCreateDTO;
+import br.com.vetcare.animal.dto.AnimalPatchDTO;
+import br.com.vetcare.animal.dto.AnimalResponseDTO;
 
-import br.com.vetcare.dto.AnimalUpdateDTO;
+import br.com.vetcare.animal.dto.AnimalUpdateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

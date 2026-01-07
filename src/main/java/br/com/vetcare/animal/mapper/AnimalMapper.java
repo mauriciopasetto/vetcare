@@ -1,10 +1,10 @@
-package br.com.vetcare.mapper;
+package br.com.vetcare.animal.mapper;
 
-import br.com.vetcare.dto.AnimalCreateDTO;
-import br.com.vetcare.dto.AnimalPatchDTO;
-import br.com.vetcare.dto.AnimalUpdateDTO;
-import br.com.vetcare.dto.AnimalResponseDTO;
-import br.com.vetcare.model.Animal;
+import br.com.vetcare.animal.dto.AnimalCreateDTO;
+import br.com.vetcare.animal.dto.AnimalPatchDTO;
+import br.com.vetcare.animal.dto.AnimalUpdateDTO;
+import br.com.vetcare.animal.dto.AnimalResponseDTO;
+import br.com.vetcare.animal.model.Animal;
 
 public final class AnimalMapper {
 
@@ -49,6 +49,7 @@ public final class AnimalMapper {
         if (dto.nome() != null) entity.setNome(dto.nome());
         if (dto.raca() != null) entity.setRaca(dto.raca());
         if (dto.sexo() != null) entity.setSexo(dto.sexo());
+        if (dto.rga() != null) entity.setRga(dto.rga());
         if (dto.especie() != null) entity.setEspecie(dto.especie());
         if (dto.dataNascimento() != null) entity.setDataNascimento(dto.dataNascimento());
         if (dto.vivo() != null) entity.setVivo(dto.vivo());
