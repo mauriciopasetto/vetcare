@@ -22,7 +22,7 @@ public class TutorController {
     //Injeção de dependencias via construtor
     private final TutorService tutorService;
 
-    public TutorController(TutorRepository tutorRepository, TutorService tutorService) {
+    public TutorController(TutorService tutorService) {
         this.tutorService = tutorService;
     }
 

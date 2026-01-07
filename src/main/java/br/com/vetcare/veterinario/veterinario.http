@@ -1,0 +1,139 @@
+@baseUrl = http://localhost:8080
+
+### Criar um novo Veterinario1
+POST http://localhost:8080/api/veterinarios
+Content-Type: application/json
+
+{
+  "nome": "Joao Carlos",
+  "cpf": "111845666-44",
+  "crmv": "crmv54687",
+  "email": "joaocarlos@email.com",
+  "telefone": "47 87878 1234",
+  "especialidade": "CLINICO_GERAL",
+  "endereco": {
+    "cep": "88025-000",
+    "logradouro": "Rua Santa Catarian",
+    "numero": "10",
+    "complemento": "",
+    "cidade": "São José",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
+}
+
+
+### Criar um novo Veterinario2
+POST http://localhost:8080/api/veterinarios
+Content-Type: application/json
+
+{
+  "nome": "Ana Beatriz Souza",
+  "cpf": "222.333.444-55",
+  "crmv": "CRMV98765",
+  "email": "ana.souza@vetcare.com",
+  "telefone": "48 99123 4567",
+  "especialidade": "DERMATOLOGIA",
+  "endereco": {
+    "cep": "88015-200",
+    "logradouro": "Avenida Rio Branco",
+    "numero": "500",
+    "complemento": "Bloco B, Sala 201",
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
+}
+
+
+### Criar um novo Veterinario3
+POST http://localhost:8080/api/veterinarios
+Content-Type: application/json
+
+{
+  "nome": "Ricardo Mendes",
+  "cpf": "999.888.777-66",
+  "crmv": "CRMV12345",
+  "email": "mendes.cirurgia@email.com",
+  "telefone": "47 98877 6655",
+  "especialidade": "CIRURGIA",
+  "endereco": {
+    "cep": "89010-001",
+    "logradouro": "Rua XV de Novembro",
+    "numero": "1200",
+    "complemento": "",
+    "cidade": "Blumenau",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
+}
+
+
+### Criar um novo Veterinario4
+POST http://localhost:8080/api/veterinarios
+Content-Type: application/json
+
+{
+  "nome": "Clara Holanda",
+  "cpf": "444.555.666-77",
+  "crmv": "CRMV33445",
+  "email": "clara.coracao@vetcare.com",
+  "telefone": "49 97766 5544",
+  "especialidade": "CARDIOLOGIA",
+  "endereco": {
+    "cep": "89801-000",
+    "logradouro": "Rua Marechal Deodoro",
+    "numero": "45",
+    "complemento": "Casa",
+    "cidade": "Chapecó",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
+}
+
+
+### Buscar veterinarios por ID
+GET http://localhost:8080/api/veterinarios/4
+Accept: application/json
+
+### Listar veterinarios não paginado
+GET {{baseUrl}}/api/veterinarios
+
+### Listar veterinarios paginado
+GET {{baseUrl}}/api/veterinarios?page=0&size=5&sort=nome,asc
+
+### Atualizar animal parcial
+PATCH {{baseUrl}}/api/veterinarios/4
+Content-Type: application/json
+
+{
+    "nome":"Carla Anglosaxonica",
+    "endereco":{
+    "cep": "99999-999"
+  }
+}
+
+### Atualizar animal completo
+PUT {{baseUrl}}/api/veterinarios/4
+Content-Type: application/json
+
+{
+  "nome": "Clara Inglaterra",
+  "cpf": "444.555.666-77",
+  "crmv": "CRMV33445",
+  "email": "clara.coracao@vetcare.com",
+  "telefone": "49 97766 5544",
+  "especialidade": "CARDIOLOGIA",
+  "endereco": {
+    "cep": "89801-000",
+    "logradouro": "Rua Marechal Deodoro",
+    "numero": "45",
+    "complemento": "Casa",
+    "cidade": "Chapecó",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
+}
+
+### Deletar animal por ID
+DELETE {{baseUrl}}/api/veterinarios/4

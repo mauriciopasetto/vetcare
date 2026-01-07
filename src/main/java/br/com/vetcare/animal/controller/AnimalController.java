@@ -23,7 +23,7 @@ public class AnimalController {
     //Injeção de dependencias via construtor
     private final AnimalService animalService;
 
-    public AnimalController(AnimalRepository animalRepository, AnimalService animalService) {
+    public AnimalController(AnimalService animalService) {
         this.animalService = animalService;
     }
 

@@ -1,7 +1,7 @@
 package br.com.vetcare.tutor.mapper;
 
 import br.com.vetcare.tutor.dto.*;
-import br.com.vetcare.tutor.model.Endereco;
+import br.com.vetcare.tutor.model.EnderecoTutor;
 import br.com.vetcare.tutor.model.Tutor;
 
 public final class TutorMapper {
@@ -19,7 +19,7 @@ public final class TutorMapper {
         tutor.setEmail(dto.email());
         tutor.setTelefone(dto.telefone());
         if (dto.endereco() != null) {
-            tutor.setEndereco(toEnderecoEntity(dto.endereco()));
+            tutor.setEnderecoTutor(toEnderecoEntity(dto.endereco()));
         }
 
         return tutor;
@@ -36,7 +36,8 @@ public final class TutorMapper {
                 entity.getRg(),
                 entity.getEmail(),
                 entity.getTelefone(),
-                toEnderecoDTO(entity.getEndereco())
+                toEnderecoDTO(entity.getEnderecoTutor()),
+                entity.getDataCriacao()
         );
     }
 
@@ -49,7 +50,10 @@ public final class TutorMapper {
         entity.setRg(dto.rg());
         entity.setEmail(dto.email());
         entity.setTelefone(dto.telefone());
-        toEnderecoDTO(entity.getEndereco());
+        toEnderecoDTO(entity.getEnderecoTutor());
+        if (dto.endereco() != null) {
+            entity.setEnderecoTutor(toEnderecoEntity(dto.endereco()));
+        }
 
 
     }
@@ -65,10 +69,10 @@ public final class TutorMapper {
         if (dto.telefone() != null) entity.setTelefone(dto.telefone());
 
         if (dto.endereco() != null) {
-            if (entity.getEndereco() == null) entity.setEndereco(new Endereco());
+            if (entity.getEnderecoTutor() == null) entity.setEnderecoTutor(new EnderecoTutor());
 
-            EnderecoDTO eDto = dto.endereco();
-            Endereco eEnt = entity.getEndereco();
+            TutorEnderecoDTO eDto = dto.endereco();
+            EnderecoTutor eEnt = entity.getEnderecoTutor();
 
             if (eDto.cep() != null) eEnt.setCep(eDto.cep());
             if (eDto.logradouro() != null) eEnt.setLogradouro(eDto.logradouro());
@@ -82,14 +86,14 @@ public final class TutorMapper {
     }
 
 
-    private static Endereco toEnderecoEntity(EnderecoDTO dto) {
-        return new Endereco(dto.cep(), dto.logradouro(), dto.numero(),
+    private static EnderecoTutor toEnderecoEntity(TutorEnderecoDTO dto) {
+        return new EnderecoTutor(dto.cep(), dto.logradouro(), dto.numero(),
                 dto.complemento(), dto.cidade(), dto.estado(), dto.uf());
     }
 
-    private static EnderecoDTO toEnderecoDTO(Endereco entity) {
+    private static TutorEnderecoDTO toEnderecoDTO(EnderecoTutor entity) {
         if (entity == null) return null;
-        return new EnderecoDTO(entity.getCep(), entity.getLogradouro(), entity.getNumero(),
+        return new TutorEnderecoDTO(entity.getCep(), entity.getLogradouro(), entity.getNumero(),
                 entity.getComplemento(), entity.getCidade(), entity.getEstado(), entity.getUf());
     }
 

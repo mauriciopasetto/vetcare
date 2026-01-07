@@ -56,7 +56,7 @@ Content-Type: application/json
   "vivo": true
 }
 
-### Buscar Animal por ID
+### Buscar animal por ID
 GET http://localhost:8080/api/animais/1
 Accept: application/json
 

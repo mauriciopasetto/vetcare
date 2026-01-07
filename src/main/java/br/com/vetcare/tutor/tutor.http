@@ -10,7 +10,15 @@ Content-Type: application/json
   "rg": "9564256",
   "email": "mauricio@email.com",
   "telefone": "48 99999 9999",
-  "endereco": "Rua Jose Beiro, 521"
+  "endereco": {
+    "cep": "88000-000",
+    "logradouro": "Rua Jose Beiro",
+    "numero": "521",
+    "complemento": "Apto 101",
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
 }
 
 
@@ -24,7 +32,15 @@ Content-Type: application/json
   "rg": "5554256",
   "email": "adriana@email.com",
   "telefone": "48 98888 9999",
-  "endereco": "Rua Jose Beiro, 521"
+  "endereco": {
+    "cep": "88000-000",
+    "logradouro": "Rua Jose Beiro",
+    "numero": "521",
+    "complemento": "Apto 101",
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
 }
 
 
@@ -38,7 +54,15 @@ Content-Type: application/json
   "rg": "7774256",
   "email": "roberto@email.com",
   "telefone": "48 97777 9999",
-  "endereco": "Rua Santos Saraiva, 150"
+  "endereco": {
+    "cep": "88000-555",
+    "logradouro": "Rua Santos Saraiva",
+    "numero": "898",
+    "complemento": "",
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
 }
 
 
@@ -52,10 +76,16 @@ Content-Type: application/json
   "rg": "6665876",
   "email": "fernanda@email.com",
   "telefone": "48 96666 9999",
-  "endereco": "Rua Felipe Schimitch, 457"
+  "endereco": {
+    "cep": "88000-888",
+    "logradouro": "Av. Rio Branco",
+    "numero": "333",
+    "complemento": "SL 1001",
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
 }
-
-
 
 
 ### Buscar Tutor por ID
@@ -65,18 +95,21 @@ Accept: application/json
 ### Listar tutores não paginado
 GET {{baseUrl}}/api/tutores
 
-### Listar animais paginado
+### Listar tutores paginado
 GET {{baseUrl}}/api/tutores?page=0&size=5&sort=nome,asc
 
-### Atualizar animal parcial
+### Atualizar Tutor parcial
 PATCH {{baseUrl}}/api/tutores/3
 Content-Type: application/json
 
 {
-    "nome":"Roberto Carlos"
+    "nome":"Roberto Carlos",
+  "endereco":{
+    "cep": "99999-999"
+  }
 }
 
-### Atualizar animal completo
+### Atualizar Tutor completo
 PUT {{baseUrl}}/api/tutores/3
 Content-Type: application/json
 
@@ -86,8 +119,16 @@ Content-Type: application/json
   "rg": "7774256",
   "email": "robertopirata@email.com",
   "telefone": "48 97777 9999",
-  "endereco": "Rua Santos Saraiva, 150"
+  "endereco": {
+    "cep": "88000-555",
+    "logradouro": "Rua dos Piratas",
+    "numero": "898",
+    "complemento": "Barco Pirata",
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "uf": "SC"
+  }
 }
 
-### Deletar animal por ID
+### Deletar Tutor por ID
 DELETE {{baseUrl}}/api/tutores/4

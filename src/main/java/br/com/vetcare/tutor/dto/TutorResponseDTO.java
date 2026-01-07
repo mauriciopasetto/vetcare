@@ -1,7 +1,7 @@
 package br.com.vetcare.tutor.dto;
 
 
-import jakarta.validation.Valid;
+import java.time.LocalDateTime;
 
 public record TutorResponseDTO(
 
@@ -11,7 +11,8 @@ public record TutorResponseDTO(
         String rg,
         String email,
         String telefone,
-        EnderecoDTO endereco
+        TutorEnderecoDTO endereco,
+        LocalDateTime dataCriacao
 
 ) {
 

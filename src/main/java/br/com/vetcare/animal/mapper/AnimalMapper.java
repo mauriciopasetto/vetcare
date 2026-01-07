@@ -66,7 +66,8 @@ public final class AnimalMapper {
                 entity.getEspecie(),
                 entity.getDataNascimento(),
                 entity.getRga(),
-                entity.isVivo()
+                entity.isVivo(),
+                entity.getDataCriacao()
         );
     }
 }

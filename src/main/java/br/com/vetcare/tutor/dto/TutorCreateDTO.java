@@ -16,7 +16,7 @@ public record TutorCreateDTO(
         @NotBlank
         String telefone,
         @Valid
-        EnderecoDTO endereco
+        TutorEnderecoDTO endereco
 
 
 ) {

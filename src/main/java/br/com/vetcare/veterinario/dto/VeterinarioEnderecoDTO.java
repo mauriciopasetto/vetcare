@@ -1,8 +1,8 @@
-package br.com.vetcare.tutor.dto;
+package br.com.vetcare.veterinario.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record EnderecoDTO(
+public record VeterinarioEnderecoDTO(
         @NotBlank String cep,
         @NotBlank String logradouro,
         @NotBlank String numero,
@@ -11,3 +11,4 @@ public record EnderecoDTO(
         @NotBlank String estado,
         @NotBlank String uf
 ) {}
+

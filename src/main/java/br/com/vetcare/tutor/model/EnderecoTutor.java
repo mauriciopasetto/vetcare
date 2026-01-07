@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Endereco {
+public class EnderecoTutor {
     private String cep;
     private String logradouro;
     private String numero;

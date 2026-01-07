@@ -2,10 +2,15 @@ package br.com.vetcare.animal.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "animal")
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,5 +42,9 @@ public class Animal {
     private String rga;
     @Column(nullable = false)
     private boolean vivo = true;
+
+    @Column(name = "data_criacao", nullable = false, updatable = false)
+    @CreatedDate
+    private LocalDateTime dataCriacao;
 }
 
