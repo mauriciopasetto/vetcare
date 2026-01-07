@@ -6,16 +6,17 @@ import br.com.vetcare.tutor.dto.TutorResponseDTO;
 import br.com.vetcare.tutor.dto.TutorUpdateDTO;
 import br.com.vetcare.tutor.repository.TutorRepository;
 import br.com.vetcare.tutor.service.TutorService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/api/tutores")
+@Tag(name = "Tutor", description = "Endpoints para gerenciamento de tutores") // Anotação do Swagger
 public class TutorController {
 
     //Injeção de dependencias via construtor

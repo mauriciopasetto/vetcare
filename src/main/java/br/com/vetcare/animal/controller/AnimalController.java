@@ -6,6 +6,7 @@ import br.com.vetcare.animal.dto.AnimalResponseDTO;
 import br.com.vetcare.animal.dto.AnimalUpdateDTO;
 import br.com.vetcare.animal.repository.AnimalRepository;
 import br.com.vetcare.animal.service.AnimalService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -14,8 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/api/animais")
+@Tag(name = "Animal", description = "Endpoints para gerenciamento de animais") // Anotação do Swagger
 public class AnimalController {
 
     //Injeção de dependencias via construtor
