@@ -1,0 +1,89 @@
+@baseUrl = http://localhost:8080/api/consultas
+
+### Agendar uma nova Consulta01
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "animalId": 1,
+  "veterinarioId": 2,
+  "dataConsulta": "2026-02-15",
+  "horaConsulta": "09:00:00",
+  "historico": "Retorno para avaliação dos exames de sangue solicitados na semana passada.",
+  "status": "MARCADA"
+}
+
+### Agendar uma nova Consulta02
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "animalId": 2,
+  "veterinarioId": 1,
+  "dataConsulta": "2026-02-08",
+  "horaConsulta": "16:45:00",
+  "status": "MARCADA",
+  "historico": "Animal deu entrada com prostração e falta de apetite. Foi realizada hidratação venosa e coleta de urina. Prescrito antibiótico por 7 dias. Apresentou melhora imediata após medicação."
+}
+
+
+### Agendar uma nova Consulta03
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "animalId": 3,
+  "veterinarioId": 3,
+  "dataConsulta": "2026-03-20",
+  "horaConsulta": "11:30:00",
+  "status": "REMARCADA",
+  "historico": "Consulta originalmente prevista para o dia 15/03. Remarcada a pedido do tutor por motivos de viagem."
+}
+
+
+### Agendar uma nova Consulta04
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "animalId": 3,
+  "veterinarioId": 3,
+  "dataConsulta": "2026-04-20",
+  "horaConsulta": "11:30:00",
+  "status": "MARCADA",
+  "historico": "Animal deu entrada com prostração e falta de apetite."
+}
+
+
+### Listar todas as consultas (Paginado)
+GET {{baseUrl}}?page=0&size=10&sort=dataConsulta,desc
+Accept: application/json
+
+### Buscar consulta por ID
+GET {{baseUrl}}/1
+Accept: application/json
+
+### Atualizar consulta completa (PUT)
+# Útil para remarcar ou alterar o status geral
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "dataConsulta": "2026-03-01",
+  "horaConsulta": "10:00:00",
+  "status": "REMARCADA",
+  "historico": "Tutor solicitou alteração de data devido a imprevisto."
+}
+
+### Atualizar apenas o Status e Histórico (PATCH)
+# Simula a finalização de uma consulta pelo veterinário
+PATCH {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "status": "REALIZADA",
+  "historico": "O animal apresenta boa recuperação. Peso: {{$random.integer(5, 20)}}kg. Prescrito vitaminas."
+}
+
+### Cancelar/Excluir uma consulta
+DELETE {{baseUrl}}/1
