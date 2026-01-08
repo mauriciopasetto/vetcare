@@ -20,10 +20,13 @@ public final class AnimalMapper {
         animal.setEspecie(dto.especie());
         animal.setDataNascimento(dto.dataNascimento());
         animal.setRga(dto.rga());
+        if (dto.vivo() != null) animal.setVivo(dto.vivo());
+        animal.setCastrado(dto.castrado());
+        animal.setCorPelagem(dto.corPelagem());
+        animal.setPorte(dto.porte());
+        animal.setPeso(dto.peso());
+        animal.setObservacoes(dto.observacoes());
 
-        if (dto.vivo() != null) {
-            animal.setVivo(dto.vivo());
-        }
         return animal;
     }
 
@@ -37,6 +40,12 @@ public final class AnimalMapper {
         entity.setDataNascimento(dto.dataNascimento());
         entity.setRga(dto.rga());
         entity.setVivo(Boolean.TRUE.equals(dto.vivo()));
+        entity.setCastrado(dto.castrado());
+        entity.setCorPelagem(dto.corPelagem());
+        entity.setPorte(dto.porte());
+        entity.setPeso(dto.peso());
+        entity.setObservacoes(dto.observacoes());
+
     }
 
     /**
@@ -53,6 +62,11 @@ public final class AnimalMapper {
         if (dto.especie() != null) entity.setEspecie(dto.especie());
         if (dto.dataNascimento() != null) entity.setDataNascimento(dto.dataNascimento());
         if (dto.vivo() != null) entity.setVivo(dto.vivo());
+        if (dto.castrado() != null) entity.setCastrado(dto.castrado());
+        if (dto.corPelagem() != null) entity.setCorPelagem(dto.corPelagem());
+        if (dto.porte() != null) entity.setPorte(dto.porte());
+        if (dto.peso() != null) entity.setPeso(dto.peso());
+        if (dto.observacoes() != null) entity.setObservacoes(dto.observacoes());
     }
 
     public static AnimalResponseDTO toResponseDTO(Animal entity) {
@@ -66,8 +80,13 @@ public final class AnimalMapper {
                 entity.getEspecie(),
                 entity.getDataNascimento(),
                 entity.getRga(),
-                entity.isVivo(),
+                entity.getVivo(),
                 entity.getDataCriacao(),
+                entity.getCastrado(),
+                entity.getCorPelagem(),
+                entity.getPorte(),
+                entity.getPeso(),
+                entity.getObservacoes(),
                 entity.getTutor().getId()
         );
     }

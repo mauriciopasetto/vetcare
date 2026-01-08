@@ -6,6 +6,7 @@ Content-Type: application/json
 
 {
   "nome": "Mauricio",
+  "dataNascimento": "1977-11-16",
   "cpf": "555444666-44",
   "rg": "9564256",
   "email": "mauricio@email.com",
@@ -28,6 +29,7 @@ Content-Type: application/json
 
 {
   "nome": "Adriana",
+  "dataNascimento": "1972-02-19",
   "cpf": "333444666-44",
   "rg": "5554256",
   "email": "adriana@email.com",
@@ -50,6 +52,7 @@ Content-Type: application/json
 
 {
   "nome": "Roberto",
+  "dataNascimento": "2000-10-25",
   "cpf": "333555666-44",
   "rg": "7774256",
   "email": "roberto@email.com",
@@ -72,6 +75,7 @@ Content-Type: application/json
 
 {
   "nome": "Fernanda",
+  "dataNascimento": "2003-02-27",
   "cpf": "777444666-44",
   "rg": "6665876",
   "email": "fernanda@email.com",
@@ -115,6 +119,7 @@ Content-Type: application/json
 
 {
   "nome": "Roberto Pirata",
+  "dataNascimento": "1950-05-10",
   "cpf": "333555666-44",
   "rg": "7774256",
   "email": "robertopirata@email.com",

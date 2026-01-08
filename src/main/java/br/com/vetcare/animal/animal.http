@@ -12,6 +12,11 @@ Content-Type: application/json
   "dataNascimento": "2020-05-10",
   "rga": "RGA123456",
   "vivo": true,
+  "castrado": true,
+  "corPelagem": "caramelo",
+  "porte": "PEQUENO",
+  "peso": 20.5,
+  "observacoes": "Obs sobre o animal",
   "tutorId": 1
 }
 
@@ -27,6 +32,11 @@ Content-Type: application/json
   "dataNascimento": "2020-05-10",
   "rga": "RGA223456",
   "vivo": true,
+  "castrado": false,
+  "corPelagem": "caramelo",
+  "porte": "MEDIO",
+  "peso": 5.5,
+  "observacoes": "Obs sobre o animal",
   "tutorId": 1
 }
 
@@ -42,6 +52,11 @@ Content-Type: application/json
   "dataNascimento": "2020-05-10",
   "rga": "RGA323456",
   "vivo": true,
+  "castrado": false,
+  "corPelagem": "malhado",
+  "porte": "GRANDE",
+  "peso": 10.5,
+  "observacoes": "Obs sobre o animal",
   "tutorId": 2
 }
 
@@ -57,6 +72,11 @@ Content-Type: application/json
   "dataNascimento": "2020-10-10",
   "rga": "RGA423456",
   "vivo": true,
+  "castrado": true,
+  "corPelagem": "cinza",
+  "porte": "PEQUENO",
+  "peso": 7.5,
+  "observacoes": "Obs sobre o animal",
   "tutorId": 3
 }
 

@@ -15,6 +15,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 @RequiredArgsConstructor
 public class ConsultaServiceImpl implements ConsultaService {
@@ -34,6 +40,18 @@ public class ConsultaServiceImpl implements ConsultaService {
         // Valida se o Veterinário existe
         Veterinario vet = veterinarioRepository.findById(dto.veterinarioId())
                 .orElseThrow(() -> new EntityNotFoundException("Veterinário não encontrado com ID: " + dto.veterinarioId()));
+
+        // Verificação de conflito do VETERINÁRIO data/hora consulta
+        if (consultaRepository.existsByVeterinarioIdAndDataConsultaAndHoraConsulta(
+                dto.veterinarioId(), dto.dataConsulta(), dto.horaConsulta())) {
+            throw new RuntimeException("O veterinário já possui consulta neste horário.");
+        }
+
+        // 3. Verificação de conflito do ANIMAL data/hora consulta
+        if (consultaRepository.existsByAnimalIdAndDataConsultaAndHoraConsulta(
+                dto.animalId(), dto.dataConsulta(), dto.horaConsulta())) {
+            throw new RuntimeException("Este animal já possui uma consulta agendada para este mesmo horário.");
+        }
 
         Consulta consulta = ConsultaMapper.toEntity(dto);
         consulta.setAnimal(animal);
@@ -92,4 +110,54 @@ public class ConsultaServiceImpl implements ConsultaService {
         }
         consultaRepository.deleteById(id);
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ConsultaResponseDTO> listarPorAnimal(Long animalId, Pageable pageable) {
+        // Opcional: validar se o animal existe antes de buscar
+        if (!animalRepository.existsById(animalId)) {
+            throw new EntityNotFoundException("Animal não encontrado");
+        }
+
+        return consultaRepository.findAllByAnimalId(animalId, pageable)
+                .map(ConsultaMapper::toResponseDTO);
+    }
+
+    @Override
+    public Page<ConsultaResponseDTO> listarPorVeterinario(Long veterinarioId, Pageable pageable) {
+        // Opcional: validar se o animal existe antes de buscar
+        if (!veterinarioRepository.existsById(veterinarioId)) {
+            throw new EntityNotFoundException("Veterinario não encontrado");
+        }
+
+        return consultaRepository.findAllByVeterinarioId(veterinarioId, pageable)
+                .map(ConsultaMapper::toResponseDTO);
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ConsultaResponseDTO> listarApartirDe(LocalDate data, Pageable pageable) {
+        return consultaRepository.findAllByDataConsultaGreaterThanEqual(data, pageable)
+                .map(ConsultaMapper::toResponseDTO);
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ConsultaResponseDTO> listarPorData(LocalDate data, Pageable pageable) {
+        return consultaRepository.findAllByDataConsulta(data, pageable)
+                .map(ConsultaMapper::toResponseDTO);
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ConsultaResponseDTO> listarPorPeriodo(LocalDate inicio, LocalDate fim, Pageable pageable) {
+        return consultaRepository.findAllByDataConsultaBetween(inicio, fim, pageable)
+                .map(ConsultaMapper::toResponseDTO);
+    }
+
+
 }

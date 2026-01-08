@@ -9,7 +9,20 @@ Content-Type: application/json
   "veterinarioId": 2,
   "dataConsulta": "2026-02-15",
   "horaConsulta": "09:00:00",
-  "historico": "Retorno para avaliação dos exames de sangue solicitados na semana passada.",
+  "historico": "Primeira avaliacao.",
+  "status": "MARCADA"
+}
+
+### Agendar uma nova Consulta02
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "animalId": 1,
+  "veterinarioId": 2,
+  "dataConsulta": "2026-02-20",
+  "horaConsulta": "09:00:00",
+  "historico": "Retorno para avaliação.",
   "status": "MARCADA"
 }
 
@@ -20,7 +33,7 @@ Content-Type: application/json
 {
   "animalId": 2,
   "veterinarioId": 1,
-  "dataConsulta": "2026-02-08",
+  "dataConsulta": "2026-02-20",
   "horaConsulta": "16:45:00",
   "status": "MARCADA",
   "historico": "Animal deu entrada com prostração e falta de apetite. Foi realizada hidratação venosa e coleta de urina. Prescrito antibiótico por 7 dias. Apresentou melhora imediata após medicação."
@@ -87,3 +100,22 @@ Content-Type: application/json
 
 ### Cancelar/Excluir uma consulta
 DELETE {{baseUrl}}/1
+
+
+### Buscar todas as consultas do Animal ID 1
+GET {{baseUrl}}/animal/1?page=0&size=10&sort=dataConsulta,asc
+Accept: application/json
+
+
+### Buscar todas as consultas do Veterinario ID 1
+GET {{baseUrl}}/veterinario/2?page=0&size=10&sort=dataConsulta,asc
+Accept: application/json
+
+### Consultas a partir de uma data
+GET {{baseUrl}}/filtro/apos?data=2026-03-01&page=0&size=10
+
+### Consultas em uma data específica
+GET {{baseUrl}}/filtro/data?data=2026-02-20&page=0&size=10
+
+### Consultas em um período (Janeiro de 2026)
+GET {{baseUrl}}/filtro/periodo?inicio=2026-02-01&fim=2026-02-16&sort=dataConsulta,asc

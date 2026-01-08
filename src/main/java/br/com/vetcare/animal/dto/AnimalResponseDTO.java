@@ -1,6 +1,7 @@
 package br.com.vetcare.animal.dto;
 
 import br.com.vetcare.animal.model.Especie;
+import br.com.vetcare.animal.model.Porte;
 import br.com.vetcare.animal.model.Sexo;
 
 import java.time.LocalDate;
@@ -17,7 +18,11 @@ public record AnimalResponseDTO (
         String rga,
         Boolean vivo,
         LocalDateTime dataCriacao,
+        Boolean castrado,
+        String corPelagem,
+        Porte porte,
+        Float peso,
+        String observacoes,
         Long tutorId
-
 )
 {}

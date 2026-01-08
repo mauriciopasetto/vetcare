@@ -42,7 +42,7 @@ public class Animal {
     @Column(nullable = false, length = 30, unique = true)
     private String rga;
     @Column(nullable = false)
-    private boolean vivo = true;
+    private Boolean vivo = true;
 
     @Column(name = "data_criacao", nullable = false, updatable = false)
     @CreatedDate
@@ -51,5 +51,22 @@ public class Animal {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tutor_id", nullable = false)
     private Tutor tutor;
+
+    @Column(nullable = false)
+    private Boolean castrado = false;
+
+    @Column(name = "cor_pelagem", nullable = false, length = 30)
+    private String corPelagem;
+
+    @Column(nullable = false)
+    private Porte porte;
+
+    @Column(nullable = false)
+    private Float peso;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String observacoes;
+
+
 }
 

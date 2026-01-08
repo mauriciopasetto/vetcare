@@ -1,6 +1,7 @@
 package br.com.vetcare.animal.dto;
 
 import br.com.vetcare.animal.model.Especie;
+import br.com.vetcare.animal.model.Porte;
 import br.com.vetcare.animal.model.Sexo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +17,11 @@ public record AnimalUpdateDTO(
         @NotNull Especie especie,
         @PastOrPresent LocalDate dataNascimento,
         @NotBlank @Size(max = 30) String rga,
-        @NotNull Boolean vivo
+        @NotNull Boolean vivo,
+        @NotNull Boolean castrado,
+        @NotBlank String corPelagem,
+        @NotNull Float peso,
+        @NotNull Porte porte,
+        @NotNull String observacoes
 
 ) {}

@@ -18,6 +18,7 @@ public final class TutorMapper {
 
         Tutor tutor = new Tutor();
         tutor.setNome(dto.nome());
+        tutor.setDataNascimento(dto.dataNascimento());
         tutor.setCpf(dto.cpf());
         tutor.setRg(dto.rg());
         tutor.setEmail(dto.email());
@@ -40,6 +41,7 @@ public final class TutorMapper {
         return new TutorResponseDTO(
                 entity.getId(),
                 entity.getNome(),
+                entity.getDataNascimento(),
                 entity.getCpf(),
                 entity.getRg(),
                 entity.getEmail(),
@@ -55,6 +57,7 @@ public final class TutorMapper {
         if (dto == null || entity == null) return;
 
         entity.setNome(dto.nome());
+        entity.setDataNascimento(dto.dataNascimento());
         entity.setCpf(dto.cpf());
         entity.setRg(dto.rg());
         entity.setEmail(dto.email());
@@ -72,6 +75,7 @@ public final class TutorMapper {
         if (dto == null || entity == null) return;
 
         if (dto.nome() != null) entity.setNome(dto.nome());
+        if (dto.dataNascimento() != null) entity.setDataNascimento(dto.dataNascimento());
         if (dto.cpf() != null) entity.setCpf(dto.cpf());
         if (dto.rg() != null) entity.setRg(dto.rg());
         if (dto.email() != null) entity.setEmail(dto.email());
