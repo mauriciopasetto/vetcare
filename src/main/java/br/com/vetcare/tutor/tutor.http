@@ -89,7 +89,7 @@ Content-Type: application/json
 
 
 ### Buscar Tutor por ID
-GET http://localhost:8080/api/tutores/4
+GET http://localhost:8080/api/tutores/1
 Accept: application/json
 
 ### Listar tutores não paginado
@@ -104,7 +104,7 @@ Content-Type: application/json
 
 {
     "nome":"Roberto Carlos",
-  "endereco":{
+    "endereco":{
     "cep": "99999-999"
   }
 }

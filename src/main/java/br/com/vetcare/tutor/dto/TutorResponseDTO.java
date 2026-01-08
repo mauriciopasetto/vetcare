@@ -1,7 +1,10 @@
 package br.com.vetcare.tutor.dto;
 
 
+import br.com.vetcare.animal.dto.AnimalResponseDTO;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record TutorResponseDTO(
 
@@ -12,9 +15,7 @@ public record TutorResponseDTO(
         String email,
         String telefone,
         TutorEnderecoDTO endereco,
-        LocalDateTime dataCriacao
+        LocalDateTime dataCriacao,
+        List<AnimalResponseDTO> animais
 
-) {
-
-
-}
+) {}

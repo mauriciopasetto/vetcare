@@ -1,5 +1,6 @@
 package br.com.vetcare.animal.model;
 
+import br.com.vetcare.tutor.model.Tutor;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -46,5 +47,9 @@ public class Animal {
     @Column(name = "data_criacao", nullable = false, updatable = false)
     @CreatedDate
     private LocalDateTime dataCriacao;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tutor_id", nullable = false)
+    private Tutor tutor;
 }
 

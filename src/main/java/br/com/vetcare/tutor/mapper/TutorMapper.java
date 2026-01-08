@@ -1,8 +1,12 @@
 package br.com.vetcare.tutor.mapper;
 
+import br.com.vetcare.animal.dto.AnimalResponseDTO;
+import br.com.vetcare.animal.mapper.AnimalMapper;
 import br.com.vetcare.tutor.dto.*;
 import br.com.vetcare.tutor.model.EnderecoTutor;
 import br.com.vetcare.tutor.model.Tutor;
+
+import java.util.List;
 
 public final class TutorMapper {
 
@@ -29,6 +33,10 @@ public final class TutorMapper {
     public static TutorResponseDTO toResponseDTO(Tutor entity) {
         if (entity == null) return null;
 
+        // Converte a lista de animais da entidade para DTOs
+        List<AnimalResponseDTO> animaisDTO = (entity.getAnimais() == null) ? List.of() :
+                entity.getAnimais().stream().map(AnimalMapper::toResponseDTO).toList();
+
         return new TutorResponseDTO(
                 entity.getId(),
                 entity.getNome(),
@@ -37,7 +45,8 @@ public final class TutorMapper {
                 entity.getEmail(),
                 entity.getTelefone(),
                 toEnderecoDTO(entity.getEnderecoTutor()),
-                entity.getDataCriacao()
+                entity.getDataCriacao(),
+                animaisDTO
         );
     }
 

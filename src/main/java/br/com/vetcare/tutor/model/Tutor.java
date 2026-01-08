@@ -1,11 +1,14 @@
 package br.com.vetcare.tutor.model;
 
+import br.com.vetcare.animal.model.Animal;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tutor")
@@ -38,5 +41,8 @@ public class Tutor{
     @Column(name = "data_criacao", nullable = false, updatable = false)
     @CreatedDate
     private LocalDateTime dataCriacao;
+
+    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Animal> animais = new ArrayList<>();
 
 }

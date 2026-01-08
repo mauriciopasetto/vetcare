@@ -24,7 +24,8 @@ public record AnimalCreateDTO (
     @NotBlank @Size(max = 30)
     String rga,
     @NotNull
-    Boolean vivo
+    Boolean vivo,
+    @NotNull Long tutorId
 
 )
 {}

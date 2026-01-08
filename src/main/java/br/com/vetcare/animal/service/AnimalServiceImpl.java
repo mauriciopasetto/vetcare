@@ -7,6 +7,9 @@ import br.com.vetcare.animal.dto.AnimalUpdateDTO;
 import br.com.vetcare.animal.mapper.AnimalMapper;
 import br.com.vetcare.animal.model.Animal;
 import br.com.vetcare.animal.repository.AnimalRepository;
+import br.com.vetcare.tutor.model.Tutor;
+import br.com.vetcare.tutor.repository.TutorRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,16 +20,22 @@ public class AnimalServiceImpl implements AnimalService {
 
 
     private final AnimalRepository animalRepository;
+    private final TutorRepository tutorRepository;
 
-    public AnimalServiceImpl(AnimalRepository animalRepository) {
+    public AnimalServiceImpl(AnimalRepository animalRepository, TutorRepository tutorRepository) {
         this.animalRepository = animalRepository;
+        this.tutorRepository = tutorRepository;
     }
 
 
     @Override
     @Transactional
     public AnimalResponseDTO salvar(AnimalCreateDTO dto) {
-        //cria animal pela conversão do DTO em ENTITY
+        // 1. Busca o tutor ou lança erro se não existir
+        Tutor tutor = tutorRepository.findById(dto.tutorId())
+                .orElseThrow(() -> new EntityNotFoundException("Tutor não encontrado id= "+dto.tutorId()));
+
+        // 2. Converte DTO para Entidade
         Animal animal = AnimalMapper.toEntity(dto);
         //padrão para vivo é true
         if (dto.vivo() == null){
@@ -35,6 +44,11 @@ public class AnimalServiceImpl implements AnimalService {
         //verifica se já não existe animal com este RGA
         //caso exista lança uma exceção
         validarRgaDuplicadoNoCadastro(animal.getRga());
+
+        // 3. Estabelece o relacionamento
+        animal.setTutor(tutor);
+
+        // 4. Salva e retorna
         Animal salvo = animalRepository.save(animal);
         return AnimalMapper.toResponseDTO(salvo);
     }

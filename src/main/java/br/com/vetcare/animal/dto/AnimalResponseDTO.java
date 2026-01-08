@@ -16,7 +16,8 @@ public record AnimalResponseDTO (
         LocalDate dataNascimento,
         String rga,
         Boolean vivo,
-        LocalDateTime dataCriacao
+        LocalDateTime dataCriacao,
+        Long tutorId
 
 )
 {}

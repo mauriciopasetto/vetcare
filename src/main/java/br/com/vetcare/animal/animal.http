@@ -11,7 +11,8 @@ Content-Type: application/json
   "especie": "CANINA",
   "dataNascimento": "2020-05-10",
   "rga": "RGA123456",
-  "vivo": true
+  "vivo": true,
+  "tutorId": 1
 }
 
 ### Criar um novo Animal2
@@ -25,7 +26,8 @@ Content-Type: application/json
   "especie": "CANINA",
   "dataNascimento": "2020-05-10",
   "rga": "RGA223456",
-  "vivo": true
+  "vivo": true,
+  "tutorId": 1
 }
 
 ### Criar um novo Animal3
@@ -39,7 +41,8 @@ Content-Type: application/json
   "especie": "CANINA",
   "dataNascimento": "2020-05-10",
   "rga": "RGA323456",
-  "vivo": true
+  "vivo": true,
+  "tutorId": 2
 }
 
 ### Criar um novo Animal4
@@ -53,7 +56,8 @@ Content-Type: application/json
   "especie": "FELINA",
   "dataNascimento": "2020-10-10",
   "rga": "RGA423456",
-  "vivo": true
+  "vivo": true,
+  "tutorId": 3
 }
 
 ### Buscar animal por ID
