@@ -2,7 +2,10 @@ package br.com.vetcare.consulta.service;
 
 import br.com.vetcare.animal.model.Animal;
 import br.com.vetcare.animal.repository.AnimalRepository;
-import br.com.vetcare.consulta.dto.*;
+import br.com.vetcare.consulta.dto.ConsultaCreateDTO;
+import br.com.vetcare.consulta.dto.ConsultaPatchDTO;
+import br.com.vetcare.consulta.dto.ConsultaResponseDTO;
+import br.com.vetcare.consulta.dto.ConsultaUpdateDTO;
 import br.com.vetcare.consulta.mapper.ConsultaMapper;
 import br.com.vetcare.consulta.model.Consulta;
 import br.com.vetcare.consulta.repository.ConsultaRepository;
@@ -16,10 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 @RequiredArgsConstructor

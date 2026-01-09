@@ -1,15 +1,13 @@
 package br.com.vetcare.consulta.service;
 
-import br.com.vetcare.animal.model.Animal;
-import br.com.vetcare.consulta.dto.*;
-import br.com.vetcare.consulta.model.Consulta;
-import br.com.vetcare.veterinario.model.Veterinario;
+import br.com.vetcare.consulta.dto.ConsultaCreateDTO;
+import br.com.vetcare.consulta.dto.ConsultaPatchDTO;
+import br.com.vetcare.consulta.dto.ConsultaResponseDTO;
+import br.com.vetcare.consulta.dto.ConsultaUpdateDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 public interface ConsultaService {
 

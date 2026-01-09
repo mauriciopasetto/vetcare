@@ -25,7 +25,6 @@ public class ConsultaController {
         this.consultaService = consultaService;
     }
 
-
     @PostMapping
     public ResponseEntity<ConsultaResponseDTO> agendar(@RequestBody @Valid ConsultaCreateDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(consultaService.agendar(dto));
