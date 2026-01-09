@@ -1,0 +1,12 @@
+### Criar Usuário Admin
+POST http://localhost:8080/usuarios
+Content-Type: application/json
+
+{
+  "login": "admin@vetcare.com",
+  "senha": "123456",
+  "role": "ADMIN"
+}
+
+### Listar Usuários
+GET http://localhost:8080/usuarios

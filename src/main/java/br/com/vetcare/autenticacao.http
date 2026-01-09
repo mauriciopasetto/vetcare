@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:8080
+
+# @name login
+### 1. Fazer Login e Capturar o Token automaticamente
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "login": "admin@vetcare.com",
+  "senha": "123456"
+}
+
+> {%
+    // O script abaixo roda logo após a requisição receber a resposta
+    // 1. Pega o token do corpo da resposta (JSON)
+    // O campo se chama 'token' porque seu record DadosTokenJWT tem esse nome
+    var tokenRecebido = response.body.token;
+    // 2. Salva em uma variável global chamada 'auth_token'
+    client.global.set("auth_token", tokenRecebido);
+    // 3. Loga no console do IntelliJ (opcional, para conferência)
+    client.log("Token capturado com sucesso: " + tokenRecebido);
+%}
+
+### 2. Acessar Rota Protegida (Listar Usuários)
+# Note o uso das chaves duplas {{auth_token}} no cabeçalho
+GET {{baseUrl}}/usuarios
+Authorization: Bearer {{auth_token}}
+Accept: application/json
+
+### 3. Tentar cadastrar Veterinário (Requer Token + Role ADMIN)
+POST {{baseUrl}}/api/veterinarios
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "nome": "Veterinário Teste Token",
+  "cpf": "123.456.789-00",
+  "crmv": "CRMV-TOKEN",
+  "email": "vet.token@email.com",
+  "telefone": "47 99999-9999",
+  "especialidade": "CIRURGIA",
+  "endereco": {
+    "cep": "88000-000",
+    "logradouro": "Rua Teste",
+    "numero": "10",
+    "cidade": "Florianópolis",
+    "estado": "SC",
+    "uf": "SC"
+  }
+}

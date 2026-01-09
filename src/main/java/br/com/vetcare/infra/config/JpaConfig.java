@@ -1,4 +1,4 @@
-package br.com.vetcare.config;
+package br.com.vetcare.infra.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
