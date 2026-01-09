@@ -1,4 +1,4 @@
-package br.com.vetcare.infra.security;
+package br.com.vetcare.auth.dto;
 
 public record DadosTokenJWT(String token) {
 }

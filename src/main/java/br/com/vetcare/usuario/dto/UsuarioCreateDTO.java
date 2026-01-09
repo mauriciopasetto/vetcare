@@ -1,6 +1,6 @@
 package br.com.vetcare.usuario.dto;
 
-import br.com.vetcare.infra.security.UserRole;
+import br.com.vetcare.auth.model.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

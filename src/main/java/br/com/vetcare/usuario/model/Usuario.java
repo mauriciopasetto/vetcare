@@ -1,6 +1,6 @@
 package br.com.vetcare.usuario.model;
 
-import br.com.vetcare.infra.security.UserRole;
+import br.com.vetcare.auth.model.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

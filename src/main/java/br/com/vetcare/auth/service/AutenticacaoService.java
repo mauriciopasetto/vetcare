@@ -1,4 +1,4 @@
-package br.com.vetcare.infra.security;
+package br.com.vetcare.auth.service;
 
 import br.com.vetcare.usuario.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;

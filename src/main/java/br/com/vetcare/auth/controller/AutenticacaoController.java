@@ -1,8 +1,8 @@
-package br.com.vetcare.controller;
+package br.com.vetcare.auth.controller;
 
 import br.com.vetcare.usuario.model.Usuario;
-import br.com.vetcare.infra.security.AuthenticationDTO;
-import br.com.vetcare.infra.security.DadosTokenJWT;
+import br.com.vetcare.auth.dto.AuthenticationDTO;
+import br.com.vetcare.auth.dto.DadosTokenJWT;
 import br.com.vetcare.infra.security.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

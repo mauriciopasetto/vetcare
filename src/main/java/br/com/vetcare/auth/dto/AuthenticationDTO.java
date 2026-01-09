@@ -1,4 +1,4 @@
-package br.com.vetcare.infra.security;
+package br.com.vetcare.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
