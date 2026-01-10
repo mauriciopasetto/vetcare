@@ -27,23 +27,25 @@ public class SecurityConfigurations {
                 .csrf(csrf -> csrf.disable()) // Desabilita CSRF (necessário pois não usamos sessão do navegador)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Define autenticação Stateless (sem sessão)
                 .authorizeHttpRequests(req -> {
-                    // Libera o login para todos (senão ninguém entra)
+                    // #Libera o login para todos (senão ninguém entra)
                     req.requestMatchers(HttpMethod.POST, "/login").permitAll();
 
-                    // EXEMPLOS DE PERMISSÕES POR ROLE (Ajuste conforme sua regra de negócio)
-                    // Apenas ADMIN pode cadastrar/alterar veterinários
-                    req.requestMatchers(HttpMethod.POST, "/api/veterinarios/**").hasRole("ADMIN");
-                    req.requestMatchers(HttpMethod.PUT, "/api/veterinarios/**").hasRole("ADMIN");
-                    req.requestMatchers(HttpMethod.DELETE, "/api/veterinarios/**").hasRole("ADMIN");
-                    // Libera GET, PUT, DELETE, PATCH, etc. quando não especifica HttpMethod
-                    req.requestMatchers("/usuarios").hasRole("ADMIN");
-                    // Consultas: Apenas VET e ADMIN podem ver detalhes ou alterar
+                    // req.requestMatchers(HttpMethod.POST, "/api/veterinarios/**").hasRole("ADMIN");
+                    // req.requestMatchers(HttpMethod.PUT, "/api/veterinarios/**").hasRole("ADMIN");
+                    // req.requestMatchers(HttpMethod.DELETE, "/api/veterinarios/**").hasRole("ADMIN");
+                    // #Libera GET, PUT, DELETE, PATCH, etc. quando não especifica HttpMethod
+                    // req.requestMatchers("/usuarios").hasRole("ADMIN");
+                    // #Consultas: Apenas VET e ADMIN podem ver detalhes ou alterar
+                    req.requestMatchers("/api/usuarios/**").hasAnyRole("ADMIN", "VET");
                     req.requestMatchers("/api/consultas/**").hasAnyRole("ADMIN", "VET");
+                    req.requestMatchers("/api/tutores/**").hasAnyRole("ADMIN", "VET");
+                    req.requestMatchers("/api/animais/**").hasAnyRole("ADMIN", "VET");
+                    req.requestMatchers("/api/veterinario/**").hasAnyRole("ADMIN", "VET");
 
-                    // Bloqueia qualquer outra rota que não tenha sido liberada acima
+                    // #Bloqueia qualquer outra rota que não tenha sido liberada acima
                     req.anyRequest().authenticated();
                 })
-                // Adiciona nosso filtro de Token ANTES do filtro padrão do Spring
+                // #Adiciona nosso filtro de Token ANTES do filtro padrão do Spring
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
