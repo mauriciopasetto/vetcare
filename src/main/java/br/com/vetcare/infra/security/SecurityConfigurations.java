@@ -29,16 +29,14 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(req -> {
                     // Libera o login para todos (senão ninguém entra)
                     req.requestMatchers(HttpMethod.POST, "/login").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/usuarios").permitAll();
-
 
                     // EXEMPLOS DE PERMISSÕES POR ROLE (Ajuste conforme sua regra de negócio)
                     // Apenas ADMIN pode cadastrar/alterar veterinários
-                    req.requestMatchers(HttpMethod.GET, "/usuarios").hasRole("ADMIN");
                     req.requestMatchers(HttpMethod.POST, "/api/veterinarios/**").hasRole("ADMIN");
                     req.requestMatchers(HttpMethod.PUT, "/api/veterinarios/**").hasRole("ADMIN");
                     req.requestMatchers(HttpMethod.DELETE, "/api/veterinarios/**").hasRole("ADMIN");
-
+                    // Libera GET, PUT, DELETE, PATCH, etc. quando não especifica HttpMethod
+                    req.requestMatchers("/usuarios").hasRole("ADMIN");
                     // Consultas: Apenas VET e ADMIN podem ver detalhes ou alterar
                     req.requestMatchers("/api/consultas/**").hasAnyRole("ADMIN", "VET");
 

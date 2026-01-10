@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AutenticacaoController {
 
-    private final AuthenticationManager manager;
+    private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
 
     @PostMapping
@@ -28,7 +28,7 @@ public class AutenticacaoController {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
 
         // O Manager chama o Service, que chama o Repository, que checa a senha criptografada
-        var authentication = manager.authenticate(authenticationToken);
+        var authentication = authenticationManager.authenticate(authenticationToken);
 
         // Se chegou aqui, a senha está correta. Geramos o token.
         var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
